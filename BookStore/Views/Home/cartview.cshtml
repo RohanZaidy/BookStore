@@ -1,0 +1,54 @@
+﻿@model IEnumerable<BookStore.Models.Cart>
+
+@{
+    ViewData["Title"] = "cartview";
+    Decimal total = 0;
+}
+
+
+        <div class="container">
+            <h2 class=" text-center">Your Cart <i class="fas fa-shopping-cart"></i></h2>
+            <div class="row">
+                <div class="col-sm-6">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Book</th>
+                                <th>Title</th>
+                                <th>Price</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td><img src="~/images/@Html.DisplayFor(model => item.BookIsbnNavigation.Image)" style="height: 100px; width:130px;" /></td>
+                                    <td>@item.BookIsbnNavigation.Title</td>
+                                    <td>@item.BookIsbnNavigation.Price rs</td>
+                                    <td><a class="btn btn-warning" asp-action="RemoveFromCart" asp-route-id="@item.BookIsbnNavigation.Isbn">Remove</a></td>
+                                </tr>
+
+                                total = total + item.BookIsbnNavigation.Price;
+                            }
+                        </tbody>
+                    </table>
+            @{
+                if(total == 0)
+                {
+                    <span><a class="btn btn-primary" asp-controller="Home" asp-action="Homme">Continue Shopping</a></span>
+                    <span><a class="text-decoration-none">____________________________</a></span>
+                    <span><b>Total: @total rs</b></span>
+                    <span><a class="btn btn-primary disabled" asp-controller="Home" asp-action="ConfirmOrder">Confirm Order</a></span>
+                    <span class="d-block text-center text-danger">Cart Is Empty!</span>
+                }
+                else
+                {
+                    <span><a class="btn btn-primary" asp-controller="Home" asp-action="Homme">Continue Shopping</a></span>
+                    <span><a class="text-decoration-none">____________________________</a></span>
+                    <span><b>Total: @total rs</b></span>
+                    <span><a class="btn btn-primary" asp-controller="Home" asp-action="ConfirmOrder">Confirm Order</a></span>
+                }
+            }
+                </div>
+            </div>
+        </div>

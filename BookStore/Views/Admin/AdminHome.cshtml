@@ -1,0 +1,131 @@
+﻿@model IEnumerable<BookStore.Models.Book>
+
+@{
+    ViewData["Title"] = "AdminHome";
+}
+<div class="AdminHonmebg">
+<h1 class="text-center"><i class="fas fa-user">Admin  DashBoard</i></h1>
+
+<div class="container">
+    <a asp-controller="Admin" asp-action="Create" class="text-decoration-none btn btn-primary mb-1">Add Book</a>
+</div>
+@{
+    if (TempData["BoodAdded"] != null)
+    {
+        <div class="container">
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>Book Added</strong> Successfully!!
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        </div>
+    }
+
+    if (TempData["UpdateSuccess"] != null)
+    {
+        <div class="container">
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong>Book Details</strong> Updated Successfully!!
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            </div>
+        }
+
+        if (TempData["BookDeleted"] != null)
+        {
+            <div class="container">
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <strong>Book Details</strong> Deleted Successfully!!
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            </div>
+        }
+    }
+<div class="container">
+    <table class="table table-dark table-hover table-sm table-responsive">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Author)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Image)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Author)
+            </td>
+            <td>
+                <img src="~/images/@Html.DisplayFor(modelItem => item.Image)" alt="Img" style="height:100px; width:130px;" />
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Isbn" class="text-decoration-none btn btn-primary"><i class="fas fa-pencil"></i>Edit</a> 
+                        <a asp-action="Details" asp-route-id="@item.Isbn" class="text-decoration-none btn btn-primary">Details</a> 
+                    <a asp-action="Delete" asp-route-id="@item.Isbn" class="text-decoration-none btn btn-warning"><i class="fas fa-trash"></i>Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</div>
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTopBtn" class="btn btn-secondary" title="Go to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+</div>
+<!-- JavaScript for scroll to top functionality -->
+<script>
+    // Get the button
+    var mybutton = document.getElementById("scrollToTopBtn");
+
+    // When the user scrolls down 100px from the top of the document, show the button
+    window.onscroll = function() {
+        scrollFunction();
+    };
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+            mybutton.style.display = "block";
+        } else {
+            mybutton.style.display = "none";
+        }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    mybutton.onclick = function() {
+        window.scrollTo({top: 0, behavior: 'smooth'});
+    };
+</script>
+
+<!-- CSS for Scroll to Top Button -->
+<style>
+    #scrollToTopBtn {
+        display: none; /* Hidden by default */
+        position: fixed; /* Fixed/sticky position */
+        bottom: 20px; /* Place the button 20px from the bottom */
+        right: 30px; /* Place the button 30px from the right */
+        z-index: 99; /* Make sure it does not overlap other elements */
+        font-size: 18px; /* Increase font size */
+        border: none; /* Remove borders */
+        outline: none; /* Remove outline */
+        background-color: #555; /* Set a background color */
+        color: white; /* Text color */
+        cursor: pointer; /* Add a mouse pointer on hover */
+        padding: 15px; /* Some padding */
+        border-radius: 50px; /* Rounded corners */
+    }
+
+        #scrollToTopBtn:hover {
+            background-color: #333; /* Darker background on hover */
+        }
+</style>

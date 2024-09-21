@@ -1,0 +1,57 @@
+﻿@model BookStore.Models.User;
+
+
+@{
+    ViewData["Title"] = "ForGot";
+}
+
+<h3 class="text-center">Change Password</h3>
+
+@{
+    if (TempData["PasswordChanged"] != null)
+    {
+        <div class="container">
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>Password</strong> Is Updated Successfully!!
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        <div>
+            <p>Go to <a asp-action="Index" class="text-decoration-none">Login</a> Page</p>
+        </div>
+        </div>
+    }
+
+    if (TempData["NoEmail"] != null)
+    {
+        <div class="container">
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>Email</strong> Is Not Registered!!
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        </div>
+    }
+}
+
+<div class="container">
+    <h4>Form</h4>
+    <div class="row">
+        <div class="col-sm-6">
+            <form asp-action="ForGot" method="post">
+                <div class="form-group">
+                    <label asp-for="Email" class="control-label"></label>
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Password" class="control-label">Create Password</label>
+                    <input asp-for="Password" class="form-control" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <div class="form-group mb-2 mt-1">
+                    <input type="submit" value="Change Password" class="btn btn-success" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

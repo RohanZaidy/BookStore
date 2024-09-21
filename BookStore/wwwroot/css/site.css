@@ -1,0 +1,122 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.navbarTop {
+    /*background-color: #03254C;
+    height: 35px;
+    display: flex;
+    flex-flow: wrap;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1030;
+    padding: 0.5rem 0;*/
+    background-color: #03254C; /* Your desired background color */
+    height: 35px; /* Adjust based on your navbar height */
+    display: flex;
+    justify-content: center; /* Center the content horizontally */
+    align-items: center; /* Center the content vertically */
+    position: fixed; /* Fixed positioning */
+    top: 0; /* Stick to the top */
+    left: 0;
+    width: 100%; /* Full width */
+    z-index: 1200; /* Ensure it stays above other content */
+    padding: 0; /* Remove default padding */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 576px) {
+    .navbarTop {
+        height: 80px;
+    }
+}
+
+.navbarBot {
+    
+    height: 50px;
+    margin-top: 50px;
+}
+
+@media (max-width: 768px) {
+    .navbarBot {
+        height: 80px;
+    }
+}
+
+    #htwo {
+        text-align: center;
+    }
+
+    .custom:hover {
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .footerContainer {
+        background-color: #03254C;
+    }
+
+    .customcarousel {
+        width: 500px;
+        height: 400px;
+    }
+
+        .customcarousel img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+
+    .Indexbg {
+        background-image: url("/images/depositphotos_588230060-stock-photo-horizontal-morning-evening-landscape-modern.jpg");
+        background-size: cover;
+        background-position: center;
+        height: 800px;
+    }
+
+    .signupbg {
+        background-image: url("/images/images (3).jpeg");
+        background-size: cover;
+        background-position: center;
+        height: 800px;
+    }
+
+@media (max-width: 576px) {
+    .navbarBot {
+        height: 90px;
+        margin-top: 90px;
+    }
+}
+
+.forgotformmargin {
+    margin-top: 130px;
+}
+
+.AdminHonmebg {
+    background-color: cadetblue;
+    
+}
+
+.Hommebg {
+    background-color: cadetblue;
+}

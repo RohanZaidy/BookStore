@@ -1,0 +1,68 @@
+﻿@model BookStore.Models.Book;
+
+@{
+    ViewData["Title"] = "DetailForUser";
+}
+
+<h1 class="text-center"><i class="fas fa-info-circle"></i>Details</h1>
+
+<div class="container">
+<div>
+    <h4>Book</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Author)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Author)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+        <dd class = "col-sm-10">
+            <b>@Html.DisplayFor(model => model.Price) rs</b>
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Language)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Language)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Pages)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Pages)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Genre)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Genre)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Image)
+        </dt>
+        <dd class = "col-sm-10">
+            <img src="~/images/@Html.DisplayFor(model => model.Image)" alt="no image to show" />
+        </dd>
+    </dl>
+</div>
+<div>
+     <a asp-action="Homme" class="text-decoration-none btn btn-primary my-2">Back</a>|
+     <a asp-action="AddToCart" asp-route-id="@Model.Isbn" class="text-decoration-none btn btn-primary my-2">Add To Cart <i class="fas fa-shopping-cart"></i></a>
+</div>
+</div>

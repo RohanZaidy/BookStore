@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>@ViewData["Title"] - BookStore</title>
+	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+	<link rel="stylesheet" href="~/BookStore.styles.css" asp-append-version="true" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+	<header>
+		<div class="container-fluid">
+			<div class="row navbarTop">
+				<div class="col-sm-6 text-center mt-2">
+					<a href="tel:+923219544606" title="Contact Us" class="text-decoration-none text-white"><i class="fas fa-phone"></i>+92 321 9544606</a>
+					<span class="text-white">|</span>
+					<a href="mailto:rohaanzaidy@gmail.com" title="Email Us" class="text-decoration-none text-white"><i class="fas fa-envelope"></i>rohaanzaidy@gmail.com</a>
+				</div>
+				<div class="col-sm-6 text-center mt-2">
+					<a href="https://www.facebook.com/rohan.zaidy?mibextid=ZbWKwL" title="FaceBook Profile" class="text-decoration-none text-white"><i class="fab fa-facebook"></i></a>
+					<span class="text-white">|</span>
+					<a href="https://www.instagram.com/_rzsol?igsh=amVvcWRqeTI0ZHZx" title="Instagram Profile" class="text-decoration-none text-white"><i class="fab fa-instagram"></i></a>
+				</div>
+			</div>
+			<div class="row navbarBot border-bottom">
+				<div class="col-md-4">
+					<h2 id="htwo"><i class="text-success fas fa-book"></i>BookStore.Web</h2>
+				</div>
+				@{
+					var loggedIn = TempData["LoggedIn"];
+					var adminlogin = TempData["AdminAccess"];
+				}
+				@if (loggedIn != null)
+				{
+					<div class="col-md-8 d-flex justify-content-center align-items-center">
+						<a asp-controller="Home" asp-action="LogOut" class="text-decoration-none text-black custom mx-3">Log Out</a>
+					</div>
+				}
+
+				@if (adminlogin != null)
+				{
+					<div class="col-md-8 d-flex justify-content-center align-items-center">
+						<a asp-controller="Admin" asp-action="logout" class="text-decoration-none text-black custom mx-3">Log Out</a>
+					</div>
+				}
+
+				@if (loggedIn == null && adminlogin == null)
+				{
+					<div class="col-md-8 d-flex justify-content-center align-items-center">
+						<a asp-controller="Home" asp-action="Index" class="text-black text-decoration-none custom mx-3">Home</a>
+						<a asp-controller="Home" asp-action="SignUp" class="text-decoration-none text-black custom mx-3">Sign Up</a>
+						<a asp-controller="Home" asp-action="Index" class="text-decoration-none text-black custom mx-3">Log Out</a>
+					</div>
+				}
+			</div>
+		</div>
+	</header>
+	<div class="container-fluid px-0 mainpic">
+		<main role="main" class="pb-0">
+			@RenderBody()
+		</main>
+	</div>
+
+	<footer class="border-top footer text-white mt-auto" style="    white-space: normal;">
+		<div class="container-fluid footerContainer">
+			<div class="container">
+				<p>
+					&copy;2024-BookStore.Web | Explore our vast collection of books and find your next great read!
+				</p>
+			</div>
+		</div>
+	</footer>
+	<script src="~/lib/jquery/dist/jquery.min.js"></script>
+	<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="~/js/site.js" asp-append-version="true"></script>
+	@await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
